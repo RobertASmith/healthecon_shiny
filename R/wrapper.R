@@ -2,11 +2,11 @@
 # Robert Smith & Paul Schneider
 # University of Sheffield
 # contact: rasmith3@sheffield.ac.uk
+# Project: Health Economics in Shiny: A tutorial
 # ==============
 
 # Set-up
 library(truncnorm)  # load the package truncnorm
-
 
 rm(list=ls())
 
@@ -15,11 +15,11 @@ f_wrapper <- function(
   #================================================================
   #                         Shiny inputs
   #================================================================
-  n_age_init = 25, # age at baseline
-  n_age_max  = 110, # maximum age of follow up
-  d_r     = 0.035, # discount rate for costs & QALYS
-  n_sim   = 1000,  # number of simulations 
-  shiny_c_Trt   = 50
+  n_age_init = 25,   # age at baseline default is 25
+  n_age_max  = 110,  # maximum age of follow up default is 110
+  d_r     = 0.035,   # discount rate for costs & QALYS (NICE 3.5%)
+  n_sim   = 1000,    # number of simulations default 1000
+  shiny_c_Trt   = 50 # cost of treatment deault 50
 
   ){
   
@@ -35,14 +35,13 @@ f_wrapper <- function(
  
   
   
-  #==============================================================================
-  #                                    PSA INPUT FUNCTION
-  #==============================================================================
+  #==========================================================
+  #                   PSA INPUT FUNCTION
+  #==========================================================
   
 # Function that generates random sample for PSA, note dependant on wrapper input.
-gen_psa <- function(n_sim = 1000, seed = 1){
-  set.seed(seed)              # set a seed to be able to reproduce the same results
-  
+gen_psa <- function(n_sim = 1000){
+   
   df_psa <- data.frame(
     
     # Transition probabilities (per cycle)
@@ -59,14 +58,14 @@ gen_psa <- function(n_sim = 1000, seed = 1){
     c_S1  = rgamma(n_sim, shape = 177.8, scale = 22.5), # cost of remaining one cycle in state S1
     c_S2  = rgamma(n_sim, shape = 225, scale = 66.7)  , # cost of remaining one cycle in state S2
     c_D   = 0                                         , # cost of being in the death state
-    c_Trt = shiny_c_Trt, # cost of treatment (per cycle)
+    c_Trt = shiny_c_Trt,                                # cost of treatment (per cycle)
     
     # Utility vectors with length n_sim 
     u_H   = rtruncnorm(n_sim, mean =    1, sd = 0.01, b = 1), # utility when healthy
     u_S1  = rtruncnorm(n_sim, mean = 0.75, sd = 0.02, b = 1), # utility when sick
     u_S2  = rtruncnorm(n_sim, mean = 0.50, sd = 0.03, b = 1), # utility when sicker
     u_D   = 0                                               , # utility when dead
-    u_Trt = rtruncnorm(n_sim, mean = 0.95, sd = 0.02, b = 1) # utility when being treated
+    u_Trt = rtruncnorm(n_sim, mean = 0.95, sd = 0.02, b = 1)  # utility when being treated
   )
   
   return(df_psa)
@@ -78,6 +77,7 @@ gen_psa <- function(n_sim = 1000, seed = 1){
 
 f_MM_sicksicker <- function(params) {
   with(as.list(params), {
+    
     # compute internal paramters as a function of external parameter
     r_HD    = - log(1 - p_HD) # rate of death in healthy
     r_S1D   = hr_S1 * r_HD 	  # rate of death in sick
@@ -157,10 +157,10 @@ f_MM_sicksicker <- function(params) {
   #                   Probablistic Sensitivity Analysis
   #==============================================================================
   
-  ## Draw random sample for PSA
+## Draw random sample for PSA
 df_psa <- gen_psa(n_sim = n_sim)
 
-  ## Initialize matrix of resultsoutcomes
+## Initialize matrix of resultsoutcomes
 df_out <- matrix(NaN, nrow = n_sim, ncol = 5)
 colnames(df_out) <- c("Cost_NoTrt", "Cost_Trt",
                       "QALY_NoTrt", "QALY_Trt",
@@ -172,8 +172,8 @@ for(i in 1:n_sim){
   cat('\r', paste(round(i/n_sim * 100), "% done", sep = " "))       # display the progress of the simulation
 }
 
+df_out <- as.data.frame(df_out)
+
 return(df_out)
 
 }
-
-f_wrapper()
