@@ -1,4 +1,5 @@
 # ==============
+# Making Markov Models Shiny 
 # Robert Smith & Paul Schneider
 # University of Sheffield
 # contact: rasmith3@sheffield.ac.uk
