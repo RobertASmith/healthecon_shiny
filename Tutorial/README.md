@@ -37,7 +37,7 @@ This paper provides a tutorial in the use of shiny for health economic modelling
 
 The diagram below shows the general model structure.
 
-![Sick Sicker Diagram](https://github.com/RobertASmith/healthecon_shiny/blob/master/Sick%20Sicker%20Diagram.PNG)
+![Sick Sicker Diagram](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/Sick%20Sicker%20Diagram.PNG)
 
 
 
