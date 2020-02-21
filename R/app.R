@@ -66,7 +66,7 @@ server <- function(input, output){
               ignoreNULL = F, {
     
     
-  df_model_res = f_wrapper(shiny_c_Trt = input$SI_c_Trt,
+  df_model_res = f_wrapper(c_Trt = input$SI_c_Trt,
                            n_age_init = input$SI_n_age_init,
                            n_sim = input$SI_n_sim)
     

@@ -19,7 +19,7 @@ f_wrapper <- function(
   n_age_max  = 110,  # maximum age of follow up default is 110
   d_r     = 0.035,   # discount rate for costs & QALYS (NICE 3.5%)
   n_sim   = 1000,    # number of simulations default 1000
-  shiny_c_Trt   = 50 # cost of treatment deault 50
+  c_Trt   = 50 # cost of treatment deault 50
 
   ){
   
@@ -58,7 +58,7 @@ gen_psa <- function(n_sim = 1000){
     c_S1  = rgamma(n_sim, shape = 177.8, scale = 22.5), # cost of remaining one cycle in state S1
     c_S2  = rgamma(n_sim, shape = 225, scale = 66.7)  , # cost of remaining one cycle in state S2
     c_D   = 0                                         , # cost of being in the death state
-    c_Trt = shiny_c_Trt,                                # cost of treatment (per cycle)
+    c_Trt = c_Trt,                                # cost of treatment (per cycle)
     
     # Utility vectors with length n_sim 
     u_H   = rtruncnorm(n_sim, mean =    1, sd = 0.01, b = 1), # utility when healthy
