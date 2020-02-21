@@ -1,9 +1,20 @@
-# Making Markov Models Shiny: A Tutorial
+---
+title: "Making Markov Models Shiny: A Tutorial"
+author: "Robert Smith^1^ and Paul Schneider^1^"
+date: "21 February 2020"
+output:
+  pdf_document: default
+  html_document: default
+---
 
-Robert Smith and Paul Schneider
-School of Health and Related Research, ScHARR, University of Sheffield
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
 
-Last updated: 21 February 2020
+\begingroup\small
+*^1^ScHARR, University of Sheffield* 
+\endgroup
+ 
 
 ### Abstract
 
