@@ -1,6 +1,6 @@
 ---
-title: "Making Markov Models Shiny"
-author: "Robert Smith"
+title: "Making Markov Models Shiny: A Tutorial"
+author: "Robert Smith^1^ and Paul Schneider^1^"
 date: "21 February 2020"
 output:
   pdf_document: default
@@ -11,18 +11,14 @@ output:
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-*Robert Smith^1^ & Paul Schneider^1^*
-
 \begingroup\small
 *^1^ScHARR, University of Sheffield* 
 \endgroup
-
-  
+ 
 
 ### Abstract
 
 Health economic models have typically been built in spreadsheet software, mostly Microsoft Excel. However high level programming languages are increasingly being used as model complexity increases and additional requirements such as probabilistic sensitivity analysis (PSA) result in long model run-time in excel . There is a particular push towards using R in health economics (Incerti et al., 2019; Jalal et al., 2017) because it is commonly used by statisticians, flexible and transparent, reusable and adaptable. One of R's strengths is its large number of packages (e.g. bcea, heemod, darthpack) which allow R programmers to leverage the work of others within their code. However as a script based approach R's weakness is that it does not have a user interface. The CRAN package 'shiny', which allows programmers to create Web-browser interfaces which interact with underlying R models, resolves this limitation. This tutorial uses a 4 state markov model (Alarid-Escudero et al., 2020) as a case-study to demonstrate a simple method of creating a shiny application from an existing R  model. All code and data are provided on the authors' GitHub page.
-
 
 
 # Introduction
@@ -61,20 +57,20 @@ f_gen_psa <- function(n_sim = 1000, SI_c_Trt){
   df_psa <- data.frame(
     
     # Transition probabilities (per cycle)
-    p_HS1   = rbeta(n_sim, 30, 170),        # probability to become sick when healthy
-    p_S1H   = rbeta(n_sim, 60, 60) ,        # probability to become healthy when sick
-    p_S1S2  = rbeta(n_sim, 84, 716),        # probability to become sicker when sick
+    p_HS1   = rbeta(n_sim, 30, 170),        # prob Healthy -> Sick
+    p_S1H   = rbeta(n_sim, 60, 60) ,        # prob Sick    -> Healthy
+    p_S1S2  = rbeta(n_sim, 84, 716),        # prob Sick    -> Sicker
     
-    p_HD    = rbeta(n_sim, 10, 1990)      ,  # probability to die when healthy
-    hr_S1   = rlnorm(n_sim, log(3),  0.01),  # rate ratio of death in S1 vs healthy
-    hr_S2   = rlnorm(n_sim, log(10), 0.02),  # rate ratio of death in S2 vs healthy 
+    p_HD    = rbeta(n_sim, 10, 1990)      ,  # prob Healthy -> Dead
+    hr_S1   = rlnorm(n_sim, log(3),  0.01),  # rate ratio death S1 vs healthy
+    hr_S2   = rlnorm(n_sim, log(10), 0.02),  # rate ratio death S2 vs healthy 
     
     # Cost vectors with length n_sim
-    c_H   = rgamma(n_sim, shape = 100, scale = 20)    , # cost of remaining one cycle in state H
-    c_S1  = rgamma(n_sim, shape = 177.8, scale = 22.5), # cost of remaining one cycle in state S1
-    c_S2  = rgamma(n_sim, shape = 225, scale = 66.7)  , # cost of remaining one cycle in state S2
-    c_D   = 0                                         , # cost of being in the death state
-    c_Trt = SI_c_Trt,                                        # cost of treatment (per cycle)
+    c_H   = rgamma(n_sim, shape = 100, scale = 20)    , # cost p/cycle in state H
+    c_S1  = rgamma(n_sim, shape = 177.8, scale = 22.5), # cost p/cycle in state S1
+    c_S2  = rgamma(n_sim, shape = 225, scale = 66.7)  , # cost p/cycle in state S2
+    c_D   = 0                                         , # cost p/cycle in state D
+    c_Trt = SI_c_Trt,                                   # cost p/cycle of treatment
     
     # Utility vectors with length n_sim 
     u_H   = rtruncnorm(n_sim, mean =    1, sd = 0.01, b = 1), # utility when healthy
@@ -103,7 +99,8 @@ f_MM_sicksicker <- function(params) {
     p_S1D   = 1 - exp(-r_S1D) # probability to die in sick
     p_S2D   = 1 - exp(-r_S2D) # probability to die in sicker
     
-    v_dwe <- v_dwc <- 1 / (1 + d_r) ^ (0:n_t) # calculate discount weight for each cycle based on discount rate d_r
+    # calculate discount weight for each cycle based on discount rate d_r
+    v_dwe <- v_dwc <- 1 / (1 + d_r) ^ (0:n_t) 
     
     # create transition probability matrix for NO treatment
     m_P <- matrix(0,
@@ -125,18 +122,22 @@ f_MM_sicksicker <- function(params) {
     ### From Dead
     m_P["D", "D"] <- 1
     
+    # create Markov trace (n_t + 1 because R doesn't understand  Cycle 0)
     m_TR <- matrix(NA, nrow = n_t + 1 , ncol = n_states, 
-                   dimnames = list(0:n_t, v_n))     # create Markov trace (n_t + 1 because R doesn't understand  Cycle 0)
+                   dimnames = list(0:n_t, v_n))     
     
-    m_TR[1, ] <- c(1, 0, 0, 0)                      # initialize Markov trace
+    m_TR[1, ] <- c(1, 0, 0, 0)          # initialize Markov trace
     
     ############# PROCESS ###########################################
+      
     
-    for (t in 1:n_t){                              # throughout the number of cycles
-      m_TR[t + 1, ] <- m_TR[t, ] %*% m_P           # estimate the Markov trace for cycle the next cycle (t + 1)
+    for (t in 1:n_t){ # throughout the number of cycles
+      # estimate the Markov trace for cycle the next cycle (t + 1)
+      m_TR[t + 1, ] <- m_TR[t, ] %*% m_P           
     }
     
     ############ OUTPUT  ###########################################
+    
     # create vectors of utility and costs for each state
     v_u_trt    <- c(u_H, u_Trt, u_S2, u_D)
     v_u_no_trt <- c(u_H, u_S1, u_S2, u_D)
@@ -219,8 +220,11 @@ f_wrapper <- function(
                                            "ICER")))
   # loop through psa inputs running the model for each.
   for(i in 1:n_sim){
+    # store results in one row of results matrix
     df_out[i,] <- f_MM_sicksicker(df_psa[i, ])
-    cat('\r', paste(round(i/n_sim * 100), "% done", sep = " "))       # display the progress of the simulation
+    
+    # display the progress of the simulation
+    cat('\r', paste(round(i/n_sim * 100), "% done", sep = " "))       
   }
   
   df_out <- as.data.frame(df_out) # convert matrix to dataframe
@@ -239,8 +243,11 @@ The set-up is relatively simple, load the shiny package from the library so that
 
 ```{r, echo = T, eval = F}
 
-library(shiny)             # we need the function shiny installed, this loads it from the library.
-source("../R/wrapper.R")   # sources the wrapper function, within wrapper need to be all functions necessary to run the model.
+# we need the function shiny installed, this loads it from the library.
+library(shiny)             
+
+# source the wrapper function.
+source("../R/wrapper.R")   
 
 ```
 
@@ -262,45 +269,46 @@ The main panel contains two objects which have been output from the server: tabl
 
 ui <- fluidPage(
   
-  titlePanel("Sick Sicker Model in Shiny"),
+  titlePanel("Sick Sicker Model in Shiny"),   # title of app
   
   # SIDEBAR
-  sidebarLayout(
+  sidebarLayout(    # indicates layout is going to be a sidebar-layout
     
-    sidebarPanel(
+    sidebarPanel( # open sidebar panel
     
-    numericInput(inputId = "SI_c_Trt",
-                 label = "Treatment Cost",
-                 value = 200,
-                 min = 0,
-                 max = 400),
+    numericInput(inputId = "SI_c_Trt",      # id of input, used in server
+                 label = "Treatment Cost",  # label next to numeric input
+                 value = 200,               # initial value
+                 min = 0,                   # minimum value allowed
+                 max = 400),                # maximum value allowed
     
-    numericInput(inputId = "SI_n_sim",
-                 label = "PSA runs",
-                 value = 1000,
-                 min = 0,
-                 max = 400),
+    numericInput(inputId = "SI_n_sim",      # id of input, used in server
+                 label = "PSA runs",        # label next to numeric input
+                 value = 1000,              # initial value
+                 min = 0,                   # minimum value allowed
+                 max = 400),                # maximum value allowed
     
-    sliderInput(inputId = "SI_n_age_init",
-                label = "initial age",
-                min = 10,
-                max = 80,
-                value = 25),
+    sliderInput(inputId = "SI_n_age_init",  # id of input, used in server
+                label = "initial age",      # label next to numeric input
+                value = 25,                 # initial value
+                min = 10,                   # minimum value allowed
+                max = 80),                  # maximum value allowed
     
 
-    actionButton("run_model","Run / update model")
+    actionButton(inputId = "run_model",     # id of action button, used in server
+                 label   = "Run model")     # action button label (on button)
                        
                 ),  # close sidebarPanel
     
-  mainPanel(
+  mainPanel(                                # open main panel
     
-    h3("Results Table"),
+    h3("Results Table"),                    # heading (results table)                
     
-    tableOutput("icer_table"),
+    tableOutput(outputId = "icer_table"),   # tableOutput id = icer_table, from server
     
-    h3("Cost-effectiveness Plane"),
+    h3("Cost-effectiveness Plane"),         # heading (Cost effectiveness plane)
     
-    plotOutput("CE_plane")
+    plotOutput(outputId = "CE_plane")       # plotOutput id = CE_plane, from server
     
             ) # close mainpanel    
       
@@ -324,18 +332,18 @@ The Cost-effectiveness plane is created in a similar process, using the *renderP
 
 ```{r, echo = T, eval = F}
 
-server <- function(input, output){
+server <- function(input, output){   # server = function with two inputs
   
- observeEvent(input$run_model,
+ observeEvent(input$run_model,       # when action button pressed ...
               ignoreNULL = F, {
     
-    
+  # use the model wrapper function to run the model with the inputs from the UI  
   df_model_res = f_wrapper(c_Trt = input$SI_c_Trt,
                            n_age_init = input$SI_n_age_init,
                            n_sim = input$SI_n_sim)
     
   
-    # ICER TABLE
+    # CREATE ICER TABLE 
     output$icer_table <- renderTable({
       
       df_res_table <- data.frame(
@@ -360,10 +368,10 @@ server <- function(input, output){
       }) # table plot end.
     
     
-   #  CE PLANE
-    output$CE_plane <- renderPlot({
+   #  CREATE COST EFFECTIVENESS PLANE
+    output$CE_plane <- renderPlot({ # render plot repeatedly updates.
       
-      #model_res = model_res() # calling reactive function
+      # calculate incremental costs and qalys from results dataframe
       df_model_res$inc_C <- df_model_res$Cost_Trt - df_model_res$Cost_NoTrt
       df_model_res$inc_Q <- df_model_res$QALY_Trt - df_model_res$QALY_NoTrt
       
@@ -409,4 +417,25 @@ The movement towards script based health economic models with web based user int
 # Conclusion
 
 The aim of this tutorial was to provide a useful reference for those hoping to create a user interface for a health economic model created in R. It is our hope that more health economic models will be created open source, and open access so that other economists can critique, learn from and adapt these models. The creation of user interfaces for these apps should improve transparency further, allowing stakeholders and third parties to conduct their own sensitivity analysis. The future is bright, maybe even shiny.
+
+# References
+
+Alarid-Escudero, F., Krijkamp, E.M., Enns, E.A., Hunink, M.G., Pechlivanoglou, P. and Jalal, H., 2020. Cohort state-transition models in R: From conceptualization to implementation. arXiv preprint arXiv:2001.07824.
+
+Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, et al. 2019b. A Need for Change! A Coding Framework for Improving Transparency in Decision Modeling. PharmacoEconomics; 37: 1329-1339, https://doi.org/10. 30 1007/s40273-019-00837-x (2019).
+
+Baio, G. and Heath, A., 2017. When simple becomes complicated: why Excel should lose its place at the top table.
+
+Beeley C. Web application development with R using Shiny. Birmingham: Packt Publishing Ltd; 2013.
+
+Decision Analysis in R for Technologies in Health (DARTH) workgroup.Decision Analysis in R for Technologies in Health (DARTH) workgroup. http://darthworkgroup.com/. Accessed 19/02/2020. 
+
+Jalal, H., Pechlivanoglou, P., Krijkamp, E., Alarid-Escudero, F., Enns, E. and Hunink, M.M., 2017. An overview of R in health decision sciences. Medical decision making, 37(7), pp.735-746.
+
+Jansen, J.P., Incerti, D. and Linthicum, M.T., 2019. Developing open-source models for the US Health System: practical experiences and challenges to date with the Open-Source Value Project. PharmacoEconomics, 37(11), pp.1313-1320.
+
+Krijkamp, E.M., Alarid-Escudero, F., Enns, E.A., Jalal, H.J., Hunink, M.M. and Pechlivanoglou, P., 2018. Microsimulation modeling for health decision sciences using R: a tutorial. Medical Decision Making, 38(3), pp.400-422.
+
+Incerti, D., Thom, H., Baio, G. and Jansen, J.P., 2019. R you still using excel? The advantages of modern software tools for health technology assessment. Value in Health, 22(5), pp.575-579.
+
 

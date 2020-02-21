@@ -1,0 +1,6 @@
+@article{alarid2020cohort,
+  title={Cohort state-transition models in R: From conceptualization to implementation},
+  author={Alarid-Escudero, Fernando and Krijkamp, Eline M and Enns, Eva A and Hunink, MG and Pechlivanoglou, Petros and Jalal, Hawre},
+  journal={arXiv preprint arXiv:2001.07824},
+  year={2020}
+}
