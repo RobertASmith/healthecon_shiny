@@ -19,7 +19,7 @@ However, despite the many strengths of programming approaches to decision modell
 
 R-Shiny is one such web application which allows programmers to create a graphical interface which looks like a website, and allows users to interact with underlying R models (Beely, 2013). Baio & Heath (2017) identify "web applications created using R Shiny"(p.e5) to be the "future of applied statistical modelling, particularly for cost-effectiveness analysis" . Using Shiny, it is possible to create flexible user interfaces which allow users to change parameters, run underlying R code and display results. This has multiple benefits:
 
-It makes script based models that are technically transparent, but only to those who have the ability to technical knowledge to understand them, open for sensitivity analysis to those with no programming knowledge (Jansen et al., 2019) . 
+It makes script based models that are technically transparent, but only to those who have the ability to technical knowledge to understand them, open for sensitivity analysis to those with no programming knowledge (Jansen et al., 2019). 
 
 It is particularly important for models which are flexible enough to cover multiple regions, organisations or perspectives and as such reporting results of sensitivity analysis would be overwhelming.
 
@@ -34,6 +34,12 @@ This R Markdown document has been created to create the code chunks for the acco
 # Methods
 
 This paper provides a tutorial in the use of shiny for health economic modelling. It uses a previously published 4-state markov model, the Sick-Sicker model (Krijkamp et al., 2020; Alarid-Escudero et al., 2020) as a case-study, using the DARTH coding framework when creating the shiny app (Alarid-Escudero et al., 2019). We have adapted it such that it has one purpose for this tutorial, to create PSA outputs.
+
+The diagram below shows the general model structure.
+
+![Sick Sicker Diagram](https://github.com/RobertASmith/healthecon_shiny/blob/master/Sick%20Sicker%20Diagram.PNG)
+
+
 
 In this case there are two functions witin the model, the first gen_psa creates a set of psa inputs, the second runs the model for a specific set of PSA inputs.
 
@@ -428,7 +434,4 @@ Jansen, J.P., Incerti, D. and Linthicum, M.T., 2019. Developing open-source mode
 Krijkamp, E.M., Alarid-Escudero, F., Enns, E.A., Jalal, H.J., Hunink, M.M. and Pechlivanoglou, P., 2018. Microsimulation modeling for health decision sciences using R: a tutorial. Medical Decision Making, 38(3), pp.400-422.
 
 Incerti, D., Thom, H., Baio, G. and Jansen, J.P., 2019. R you still using excel? The advantages of modern software tools for health technology assessment. Value in Health, 22(5), pp.575-579.
-
-![Distance to the nearest parkrun event around Sheffield](https://github.com/RobertASmith/healthecon_shiny/blob/master/Sick%20Sicker%20Diagram.PNG)
-
 
