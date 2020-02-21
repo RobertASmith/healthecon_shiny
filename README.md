@@ -1,14 +1,11 @@
 # Making Markov Models Shiny: A Tutorial
 
-Robert Smith^1^ and Paul Schneider^1^
+Robert Smith and Paul Schneider
+
+ScHARR, University of Sheffield
+Dark Peak Analytics
 
 21 February 2020
-
-
-\begingroup\small
-*^1^ScHARR, University of Sheffield* 
-\endgroup
-
 
 ### Abstract
 
