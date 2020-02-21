@@ -3,7 +3,6 @@
 Robert Smith and Paul Schneider
 
 ScHARR, University of Sheffield
-Dark Peak Analytics
 
 21 February 2020
 
@@ -430,5 +429,5 @@ Krijkamp, E.M., Alarid-Escudero, F., Enns, E.A., Jalal, H.J., Hunink, M.M. and P
 
 Incerti, D., Thom, H., Baio, G. and Jansen, J.P., 2019. R you still using excel? The advantages of modern software tools for health technology assessment. Value in Health, 22(5), pp.575-579.
 
-
+![Distance to the nearest parkrun event around Sheffield](https://github.com/bitowaqr/parkrun_access_equity/raw/master/Untitled.png)
 
