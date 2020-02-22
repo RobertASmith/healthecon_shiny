@@ -6,42 +6,13 @@ ScHARR, University of Sheffield
 
 21 February 2020
 
-### Abstract
-
-Health economic models have typically been built in spreadsheet software, mostly Microsoft Excel. However high level programming languages are increasingly being used as model complexity increases and additional requirements such as probabilistic sensitivity analysis (PSA) result in long model run-time in excel . There is a particular push towards using R in health economics (Incerti et al., 2019; Jalal et al., 2017) because it is commonly used by statisticians, flexible and transparent, reusable and adaptable. One of R's strengths is its large number of packages (e.g. bcea, heemod, darthpack) which allow R programmers to leverage the work of others within their code. However as a script based approach R's weakness is that it does not have a user interface. The CRAN package 'shiny', which allows programmers to create Web-browser interfaces which interact with underlying R models, resolves this limitation. This tutorial uses a 4 state markov model (Alarid-Escudero et al., 2020) as a case-study to demonstrate a simple method of creating a shiny application from an existing R  model. All code and data are provided on the authors' GitHub page.
-
-
-# Introduction
-  
-As the complexity and computational requirements of decision models increase there is growing recognition of the advantages of high level programming languages which support statistical analysis (e.g. R, Python, C++, MATLAB, Java). Of these R, an open-source functional programming language, appears to be ahead of the competition for decision modelling (Jalal et al. 2017), in part because it is free, supported by a large community of statisticians and health economists and has extensive resources including tutorials, guidelines and packages which allow users to build upon the work of others, but also partially because it is the only programming environment accepted by NICE (Check this). 
-
-However, despite the many strengths of programming approaches to decision modelling, an important limitation until recently has been the lack of an easily interpretable user interface which is simple to create. Even Microsoft Excel provides the user with a tidy-ish front page to a model in which a decision maker can change a parameter in a specific cell. Incerti et al. (2019) identify web applications as being an essential part of any model in R, stating that they "believe that the future of cost-effectiveness modeling lies in web apps, in which graphical interfaces are used to run script-based models" (p. 577).  
-
-R-Shiny is one such web application which allows programmers to create a graphical interface which looks like a website, and allows users to interact with underlying R models (Beely, 2013). Baio & Heath (2017) identify "web applications created using R Shiny"(p.e5) to be the "future of applied statistical modelling, particularly for cost-effectiveness analysis" . Using Shiny, it is possible to create flexible user interfaces which allow users to change parameters, run underlying R code and display results. This has multiple benefits:
-
-It makes script based models that are technically transparent, but only to those who have the ability to technical knowledge to understand them, open for sensitivity analysis to those with no programming knowledge (Jansen et al., 2019). 
-
-It is particularly important for models which are flexible enough to cover multiple regions, organisations or perspectives and as such reporting results of sensitivity analysis would be overwhelming.
-
-In some cases the model inputs will be unknown, or quickly outdated, such that constantly recreating the model would be unfeasible and it is far more efficient to allow the user to input updated parameters, and assuming the same structure, run the updated model.
-
-While it is preferable that models constructed in R are made open-access to improve transparency, replicability and collaboration, it is not a requirement of shiny. Code and data can be kept private, and the application shared internally, or using password protection online through a variety of providers. 
-
-We provide a simple example using a previously published 4-state markov model, the Sick-Sicker model which has been described in previous publications (Krijkamp et al., 2020; Alarid-Escudero et al., 2020) and in open source teaching by the DARTH workgroup (Decision Analysis in R for Technologies in Health, 2019). The resulting user interface of this tutorial example is simple, allowing the decision-maker to change only the costs and treatment effect. However, once the reader is confident in creating a shiny app from an existing model, iteratively adapting the application to allow for different/additional inputs and outputs, and meet aesthetic requirements is relatively straight forward.
-
-This R Markdown document has been created to create the code chunks for the accomopanying publication. It can be used as a tutorial to create web applications from script based models created in R.
-
-# Methods
-
-This paper provides a tutorial in the use of shiny for health economic modelling. It uses a previously published 4-state markov model, the Sick-Sicker model (Krijkamp et al., 2020; Alarid-Escudero et al., 2020) as a case-study, using the DARTH coding framework when creating the shiny app (Alarid-Escudero et al., 2019). We have adapted it such that it has one purpose for this tutorial, to create PSA outputs.
+This tutorial aims to provide a step by step guide in the use of shiny for health economic modelling. It uses a previously published 4-state markov model, the Sick-Sicker model (Krijkamp et al., 2020; Alarid-Escudero et al., 2020) as a case-study, using the DARTH coding framework when creating the shiny app (Alarid-Escudero et al., 2019). We have adapted it such that it has one purpose for this tutorial, to create PSA outputs.
 
 The diagram below shows the general model structure.
 
 ![Sick Sicker Diagram](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/Sick%20Sicker%20Diagram.PNG)
 
-
-
-In this case there are two functions witin the model, the first gen_psa creates a set of psa inputs, the second runs the model for a specific set of PSA inputs.
+In this case there are two functions witin the model, the first gen_psa creates a set of psa inputs, the second runs the markov model for a specific set of PSA inputs.
 
 ## Functions
 
@@ -401,17 +372,6 @@ The app can be run within the R file using the function *shinyApp* which depends
 shinyApp(ui, server)
 ```
 
-# Discussion
-
-With the movement to make economic models more transparent and reproducible gaining traction, the shift to the use of script based models written in programming languages seems inevitable. This move will be gradual, but will nevertheless require upskilling of health economists used to working in excel through short courses, and the introduction of new courses at universities. It is our opinion that these new courses should include some instruction on the creation of user interfaces and web applications for script based economic models. Since the most predominant script based programming environment in health economics is currently R, we recommend including a tutorial in R-Shiny within these courses.
-
-As demonstrated in this tutorial, creating a web application for an economic model created in R programming environment is relatively straightforward. The authors' experience of creating these web apps has led us to the conclusion that the most efficient method is to work iteratively, first ensuring that the model is working as intended before making small incremental changes to the UI and server one item at a time. While experienced programmers can make substantial time savings by combining multiple steps we have found that the time taken to correct mistakes far outweighs the time savings associated with combining steps.
-
-From our experience in working with stakeholders from a variety of sectors, there is still a concern about the process of deploying code and data to an external server. While providers such as ShinyIO provide assurances of SSR encryption and user authentication clients with particularly sensitive data may still have concerns. This problem can be avoided in two ways: firstly if clients have their own server and the ability to deploy applications they can maintain control of all data and code, and secondly the application could simply not be deployed, and instead simply created during a meeting using code and data shared in a zip file.
-
-The movement towards script based health economic models with web based user interfaces is particularly useful in situations where a general model structure has been created with a variety of stakeholders in mind, each of which may have different input parameters and wish to conduct sensitivity analysis specific to their decision. For example the World Health Organisation Department of Sexual and Reproductive Health and Research recently embedded a shiny application into their website. The application runs a heemod model in R in an external server, and allows users to select their country and change country specific input parameters, run the model and display results. The process of engagement, the ability to 'play' with the model and test the extremes of the decision makers' assumptions gives stakeholders more control over models, making them feel less like black boxes, and provides some engagement with the process. While there is a danger that a mis-informed stakeholder may make a mistake in their choice of parameter, we should remember that the role of the model is to inform decision-makers not instruct them ... and besides: it is simple to limit the range that parameter inputs can take.
-
-# Conclusion
 
 The aim of this tutorial was to provide a useful reference for those hoping to create a user interface for a health economic model created in R. It is our hope that more health economic models will be created open source, and open access so that other economists can critique, learn from and adapt these models. The creation of user interfaces for these apps should improve transparency further, allowing stakeholders and third parties to conduct their own sensitivity analysis. The future is bright, maybe even shiny.
 
@@ -419,19 +379,6 @@ The aim of this tutorial was to provide a useful reference for those hoping to c
 
 Alarid-Escudero, F., Krijkamp, E.M., Enns, E.A., Hunink, M.G., Pechlivanoglou, P. and Jalal, H., 2020. Cohort state-transition models in R: From conceptualization to implementation. arXiv preprint arXiv:2001.07824.
 
-Alarid-Escudero F, Krijkamp E, Pechlivanoglou P, et al. 2019b. A Need for Change! A Coding Framework for Improving Transparency in Decision Modeling. PharmacoEconomics; 37: 1329-1339, https://doi.org/10. 30 1007/s40273-019-00837-x (2019).
-
-Baio, G. and Heath, A., 2017. When simple becomes complicated: why Excel should lose its place at the top table.
-
-Beeley C. Web application development with R using Shiny. Birmingham: Packt Publishing Ltd; 2013.
-
 Decision Analysis in R for Technologies in Health (DARTH) workgroup.Decision Analysis in R for Technologies in Health (DARTH) workgroup. http://darthworkgroup.com/. Accessed 19/02/2020. 
 
-Jalal, H., Pechlivanoglou, P., Krijkamp, E., Alarid-Escudero, F., Enns, E. and Hunink, M.M., 2017. An overview of R in health decision sciences. Medical decision making, 37(7), pp.735-746.
-
-Jansen, J.P., Incerti, D. and Linthicum, M.T., 2019. Developing open-source models for the US Health System: practical experiences and challenges to date with the Open-Source Value Project. PharmacoEconomics, 37(11), pp.1313-1320.
-
 Krijkamp, E.M., Alarid-Escudero, F., Enns, E.A., Jalal, H.J., Hunink, M.M. and Pechlivanoglou, P., 2018. Microsimulation modeling for health decision sciences using R: a tutorial. Medical Decision Making, 38(3), pp.400-422.
-
-Incerti, D., Thom, H., Baio, G. and Jansen, J.P., 2019. R you still using excel? The advantages of modern software tools for health technology assessment. Value in Health, 22(5), pp.575-579.
-
