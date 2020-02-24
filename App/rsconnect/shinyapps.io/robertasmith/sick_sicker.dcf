@@ -1,0 +1,13 @@
+name: sick_sicker
+title: sick_sicker
+username:
+account: robertasmith
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1855054
+bundleId: 2825254
+url: https://robertasmith.shinyapps.io/sick_sicker/
+when: 1582567437.70606
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: readme.md
