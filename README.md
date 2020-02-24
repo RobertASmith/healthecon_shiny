@@ -4,26 +4,19 @@
 
 *ScHARR, University of Sheffield, UK*
 
-Contact
-- email: rasmith3@sheffield.ac.uk
-- [linkedin](https://www.linkedin.com/in/robert-smith-53b28438)
+Contact:
+- Email: rasmith3@sheffield.ac.uk
+- [LinkedIn](https://www.linkedin.com/in/robert-smith-53b28438)
 
 This repository contains material related to the application of R-Shiny to Health Economics and Decision Science. There are three main parts: 
-- a pre-print publication explaining the benefits and process of making models Shiny
-- a simple application which can be run by the user by cloning this repo or copying the two files in the app folder 
-- a tutorial which goes into more detail describing the code.
+- a pre-print [publication](https://github.com/RobertASmith/healthecon_shiny/blob/master/Publication/report.pdf) explaining the benefits and process of making models Shiny
+- a simple application which can be run by the user by cloning this repo or copying the two files in the [app](https://github.com/RobertASmith/healthecon_shiny/tree/master/App) folder 
+- a [tutorial](https://github.com/RobertASmith/healthecon_shiny/tree/master/Tutorial) which goes into more detail than the publication describing the code.
 
-Publication: [test](https://github.com/RobertASmith/healthecon_shiny/blob/master/Publication/report.pdf). Possible titles: 
-The future of health economics is Shiny: a tutorial.
-
-App files: https://github.com/RobertASmith/healthecon_shiny/tree/master/App
-
-Tutorial: https://github.com/RobertASmith/healthecon_shiny/tree/master/Tutorial
-
-We hope that others will contribute to this repository.
-
-List of contributors:
+### List of contributors:
 Robert Smith, University of Sheffield
 Paul Schneider, University of Sheffield
+
+Rob and Paul are joint funded by the Wellcome Trust Doctoral Training Centre in Public Health Economics and Decision Science [108903] and the University of Sheffield.
 
 
