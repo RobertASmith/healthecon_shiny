@@ -14,8 +14,8 @@ This repository contains material related to the application of R-Shiny to Healt
 - a [tutorial](https://github.com/RobertASmith/healthecon_shiny/tree/master/Tutorial) which goes into more detail than the publication describing the code.
 
 ### List of contributors:
-Robert Smith, University of Sheffield
-Paul Schneider, University of Sheffield
+- Robert Smith, University of Sheffield
+- Paul Schneider, University of Sheffield
 
 Rob and Paul are joint funded by the Wellcome Trust Doctoral Training Centre in Public Health Economics and Decision Science [108903] and the University of Sheffield.
 
