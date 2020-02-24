@@ -1,1 +1,5 @@
 theme: jekyll-theme-minimal
+collections:
+  teaching:
+    output: true
+    permalink: /:collection/:path/
