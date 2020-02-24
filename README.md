@@ -8,9 +8,12 @@ email: rasmith3@sheffield.ac.uk
 
 linkedin: https://www.linkedin.com/in/robert-smith-53b28438/
 
-This repository contains material related to the application of R-Shiny to Health Economics and Decision Science. There are three main parts: a pre-print publication explaining the benefits and process of making models Shiny, a simple application which can be run by the user by cloning this repo or copying the two files in the app folder, and a tutorial which goes into more detail describing the code.
+This repository contains material related to the application of R-Shiny to Health Economics and Decision Science. There are three main parts: 
+- a pre-print publication explaining the benefits and process of making models Shiny
+- a simple application which can be run by the user by cloning this repo or copying the two files in the app folder 
+- a tutorial which goes into more detail describing the code.
 
-Publication: https://github.com/RobertASmith/healthecon_shiny/blob/master/Publication/report.pdf. Possible titles: 
+Publication: [test](https://github.com/RobertASmith/healthecon_shiny/blob/master/Publication/report.pdf). Possible titles: 
 The future of health economics is Shiny: a tutorial.
 
 App files: https://github.com/RobertASmith/healthecon_shiny/tree/master/App
