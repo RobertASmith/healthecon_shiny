@@ -1,12 +1,12 @@
 ## R-Shiny for Health Economics
 
-Robert Smith and Paul Schneider
+[Robert Smith](https://www.sheffield.ac.uk/scharr/staff-pgrs/studentprofiles/robertsmith) and [Paul Schneider](https://www.sheffield.ac.uk/scharr/staff-pgrs/studentprofiles/paulschneider)
 
-ScHARR, University of Sheffield
+*ScHARR, University of Sheffield, UK*
 
-email: rasmith3@sheffield.ac.uk
-
-linkedin: https://www.linkedin.com/in/robert-smith-53b28438/
+Contact
+- email: rasmith3@sheffield.ac.uk
+- [linkedin](https://www.linkedin.com/in/robert-smith-53b28438)
 
 This repository contains material related to the application of R-Shiny to Health Economics and Decision Science. There are three main parts: 
 - a pre-print publication explaining the benefits and process of making models Shiny
