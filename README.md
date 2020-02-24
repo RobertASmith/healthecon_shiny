@@ -1,4 +1,4 @@
-R-Shiny for Health Economics
+## R-Shiny for Health Economics
 
 Robert Smith and Paul Schneider
 
