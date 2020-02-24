@@ -6,7 +6,9 @@ ScHARR, University of Sheffield
 
 21 February 2020
 
-This tutorial aims to provide a step by step guide in the use of shiny for health economic modelling. It uses a previously published 4-state markov model, the Sick-Sicker model (Krijkamp et al., 2020; Alarid-Escudero et al., 2020) as a case-study, using the DARTH coding framework when creating the shiny app (Alarid-Escudero et al., 2019). We have adapted it such that it has one purpose for this tutorial, to create PSA outputs.
+*Please cite this tutorial as: XXXXXXXXXXXXXXXXX.
+
+This tutorial aims to provide a step by step guide in the use of R-Shiny for health economic modelling. It uses a previously published 4-state markov model, the Sick-Sicker model (Krijkamp et al., 2020; Alarid-Escudero et al., 2020) as a case-study, using the DARTH coding framework when creating the shiny app (Alarid-Escudero et al., 2019). We have adapted it such that it has one purpose for this tutorial, to create PSA outputs.
 
 The diagram below shows the general model structure.
 
@@ -362,8 +364,8 @@ server <- function(input, output){   # server = function with two inputs
   
 ```  
 
-### Running the app
-The app can be run within the R file using the function *shinyApp* which depends on the *ui* and *server* which have been created and described above. Running this creates a shiny application in the local environment (e.g. your desktop). In order to deploy the application onto the web the app needs to be *published* using the publish button in the top right corner of the R-file in RStudio (next to run-app).
+### Running the app internally
+The app can be run within the R file using the function *shinyApp* which depends on the *ui* and *server* which have been created and described above. Running this creates a shiny application in the local environment (e.g. your desktop).
 
 ```
 
@@ -372,8 +374,12 @@ The app can be run within the R file using the function *shinyApp* which depends
 shinyApp(ui, server)
 ```
 
+### Deploying the app on the web
+There are numerous methods of deploying applications on the web. Since our applications are used by a relatively small number of people we have typically used the Shinyapps.io platform provided through R-Studio. The method of deploying apps on Shinyapps.io is explained in detail [here](https://shiny.rstudio.com/articles/shinyapps.html). For apps which are expected to be used extensively or which require very large datasets it is likely to be much cheaper to use another service.
 
-The aim of this tutorial was to provide a useful reference for those hoping to create a user interface for a health economic model created in R. It is our hope that more health economic models will be created open source, and open access so that other economists can critique, learn from and adapt these models. The creation of user interfaces for these apps should improve transparency further, allowing stakeholders and third parties to conduct their own sensitivity analysis. The future is bright, maybe even shiny.
+### Conclusion
+
+The aim of this tutorial was to provide a useful reference for those hoping to create a user interface for a health economic model created in R. It is our hope that more health economic models will be created open source, and open access so that other economists can critique, learn from and adapt these models. The creation of user interfaces for these apps should improve transparency further, allowing stakeholders and third parties to conduct their own sensitivity analysis. We are particularly interested in the use of R and R-Shiny in public health decision modelling, so feel free to get in touch with any queries.
 
 # References
 
