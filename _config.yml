@@ -1,5 +1,5 @@
 theme: jekyll-theme-minimal
-
 collections:
-  Tutorial:
+  tutorial:
     output: true
+    permalink: https://github.com/RobertASmith/healthecon_shiny/tree/master/web
