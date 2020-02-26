@@ -1,7 +1,9 @@
 ---
 title: "Making Markov Models Shiny: A Tutorial"
 author: "Robert Smith^1^ and Paul Schneider^1^"
-date: "21 February 2020"
+date: "`r format(Sys.time(), '%d %B, %Y')`"
+header-includes:
+   - \usepackage{draftwatermark}
 output:
   pdf_document: default
   html_document: default
