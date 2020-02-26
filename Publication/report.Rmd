@@ -41,7 +41,7 @@ This R Markdown document has been created to create the code chunks for the acco
 
 This paper provides a tutorial in the use of R-Shiny for health economic modelling. It uses a previously published 4-state markov model, the Sick-Sicker model (Krijkamp et al., 2020; Alarid-Escudero et al., 2020) as a case-study, using the DARTH coding framework when creating the R-Shiny app (Alarid-Escudero et al., 2019). We have adapted it such that it has one purpose for this tutorial, to create PSA outputs.
 
-While the aim of this tutorial is not to describe the DARTH model, readers are encouraged to read the cited texts above, it is important to have a basic understanding. The sick-sicker model contains two functions, the first, gen_psa creates a set of psa inputs, the second, f_MM_sicksicker runs the model for a specific set of PSA inputs.
+While the aim of this tutorial is not to describe the DARTH model, readers are encouraged to read the cited texts above, it is important to have a basic understanding. The sick-sicker model contains two functions, the first, *f_gen_psa* creates a set of psa inputs, the second, *f_MM_sicksicker* runs the model for a specific set of PSA inputs.
 
 ## Functions
 
@@ -170,7 +170,7 @@ f_MM_sicksicker <- function(params) {
 ## Creating a Wrapper
 When using a web application it is likely that the user will want to be able to change parameter inputs and re-run the model. In order to make this simple, we recommend wrapping the entire model into a function. We call this function *f_wrapper*, using the prefix *f_* to denote that this is a function.
 
-The wrapper function has as its inputs all the things which we may wish to vary using R-Shiny. We set the default values to those of the base model in any report/publication. The model then generates PSA inputs using the *f_gen_psa* function, creates a table of results, and finally loops through the PSA, running the model with each set of PSA inputs (a row from df_psa) in turn. The function then returns the results in the form of a dataframe with n=5 columns and n=psa rows. The columns contain the costs and qalys for treatment and no treatment for each PSA run, as well as an ICER for that PSA run.
+The wrapper function has as its inputs all the things which we may wish to vary using R-Shiny. We set the default values to those of the base model in any report/publication. The model then generates PSA inputs using the *f_gen_psa* function, creates a table of results, and finally loops through the PSA, running the model with each set of PSA inputs (a row from *df_psa*) in turn. The function then returns the results in the form of a dataframe with n=5 columns and n=psa rows. The columns contain the costs and qalys for treatment and no treatment for each PSA run, as well as an ICER for that PSA run.
 
 ```{r, echo = T, eval = F}
 f_wrapper <- function(
@@ -186,8 +186,6 @@ f_wrapper <- function(
 
   ){
   
-  
-  
   #================================================================
   #                         Non-shiny inputs
   #================================================================
@@ -195,13 +193,11 @@ f_wrapper <- function(
   v_n <- c("H", "S1", "S2", "D") # the 4 health states of the model:
   n_states <- length(v_n) # number of health states 
 
-  
   #================================================================
   #                         Create PSA Inputs
   #================================================================
   
   df_psa <- f_gen_psa(n_sim = n_sim, c_Trt)
-
 
   #================================================================
   #                         RUN PSA
@@ -233,11 +229,11 @@ f_wrapper <- function(
 
 ## Integrating into R-Shiny
 
-
+The method so far has involved wrapping the model into a function, which takes some inputs and returns a data-frame of outputs, the next steps involve integrating the model function into a shiny web-app. This is all done within a R file which we call *app.R* (https://github.com/RobertASmith/healthecon_shiny/tree/master/App). In order for this to work please ensure that the shiny function is installed, using *install.packages("shiny")* if it is not.
 
 ### Set-up
 
-The set-up is relatively simple, load the R-Shiny package from the library so that we can use the R-Shiny functions, the source the file to load the wrapper function (which includes all model functionality).
+The set-up is relatively simple, load the R-Shiny package from your library so that you can use the R-Shiny function. The next step is to use the *source* function in baseR to load the wrapper function, being careful to ensure your relative path is correct ('./wrapper.R' should work if the app.R file is within the same folder).
 
 ```{r, echo = T, eval = F}
 
@@ -245,7 +241,7 @@ The set-up is relatively simple, load the R-Shiny package from the library so th
 library(shiny)             
 
 # source the wrapper function.
-source("../R/wrapper.R")   
+source("./wrapper.R")   
 
 ```
 
