@@ -8,6 +8,8 @@ This folder contains two files:
 - app.R
 - wrapper.R
 
+If you are unfamiliar with GitHub and wish to download them to your desktop, ensure both files are within the same folder.
+
 ### app.R
 This file contains a script with the user interface and server functions. In the top right corner there is a button 'Run App'. If you click this the application should then pop up.
 In order to understand this code you will need to know: 
