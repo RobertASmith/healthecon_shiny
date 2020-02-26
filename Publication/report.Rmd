@@ -53,15 +53,18 @@ Here, we provide a simple example of a shiny web app, using a general 4-state Ma
 # Methods
 
 While the focus of this tutorial is on the application of shiny for health economic models, it will be useful to have a basic understanding of the underlying 'sick-sicker-model'. In the following, we will provide a brief overview. For further details, readers are encouraged to consult Alarid-Escudero et al., 2019, Krijkamp et al., 2020 and the DARTH group website [http://darthworkgroup.com/](http://darthworkgroup.com/).
-The Sick-Sicker model is a 4 state Markov model in which the population can be either Healthy, Sick, Sicker or Dead. The cohort progresses through the model in cycles of equal duration, with the proportion of those in each health state in the next cycle being dependant on the proportion in each health state in the current cycle *m_TR[t, ]* and the transition probability matrix *m_P*.       
-The analysis incorporates PSA by creating a data-frame of PSA inputs (one row being one set of PSA inputs) based on cost, utility and probability distributions using the function *f_gen_psa*. The model is then run for each set of PSA inputs one at a time using the model function *f_MM_sicksicker*. Note that we adapt the coding framework from Alarid-Escudero et al., (2019) to use the *f_* prefix for functions.
+The Sick-Sicker model is a 4 state (Healthy, Sick, Sicker or Dead) Markov model. The cohort progresses through the model in cycles of equal duration, with the proportion of those in each health state in the next cycle being dependant on the proportion in each health state in the current cycle and the transition probability matrix.       
+The analysis incorporates PSA by creating a data-frame of PSA inputs (one row being one set of PSA inputs) based on cost, utility and probability distributions using the function *f_gen_psa* and then running the model for each set of PSA inputs one at a time using the model function *f_MM_sicksicker*. We therefore describe the two functions *f_gen_psa* and *f_MM_sicksicker* in more detail.  Note that we adapt the coding framework from Alarid-Escudero et al., (2019) to use the *f_* prefix for functions.
 
 ## Functions
 
 ### Creating PSA inputs.
 
+The f_gen_psa function returns a data-frame of probabilistic sensitivity analysis inputs: 
+- transition probabilities between health states using a beta distribution, hazard rates using a log-normal distribution, costs using a gamma distribution and utilities using a truncnormal distribution (NOTE: installing and loading the 'truncnorm' package using *install.packages* and *library()* is necessary prior to using the *rtruncnorm* function. 
+
 ```{r echo = T, eval = F}
-f_gen_psa <- function(n_sim = 1000, SI_c_Trt){
+f_gen_psa <- function(n_sim = 1000, c_Trt = SI_c_Trt){
    
   df_psa <- data.frame(
     
@@ -79,7 +82,7 @@ f_gen_psa <- function(n_sim = 1000, SI_c_Trt){
     c_S1  = rgamma(n_sim, shape = 177.8, scale = 22.5), # cost p/cycle in state S1
     c_S2  = rgamma(n_sim, shape = 225, scale = 66.7)  , # cost p/cycle in state S2
     c_D   = 0                                         , # cost p/cycle in state D
-    c_Trt = SI_c_Trt,                                   # cost p/cycle of treatment
+    c_Trt = c_Trt,                                   # cost p/cycle of treatment
     
     # Utility vectors with length n_sim 
     u_H   = rtruncnorm(n_sim, mean =    1, sd = 0.01, b = 1), # utility when healthy
@@ -95,6 +98,7 @@ f_gen_psa <- function(n_sim = 1000, SI_c_Trt){
 ```
 
 ### Running the model for a specific set of PSA inputs
+The function *f_MM_sicksicker* makes use of the *with* function which applies an expression (in this case the rest of the code) to a dataset (in this case params, which will be a row of psa-inputs). It uses the params (read psa inputs) to create a transition probability matrix *m_P*, and then moves the cohort through the simulation one cycle at a time, recording the proportions in each health state in a markov trace *m_TR* and applying the transition matrix to calculate the proportions in the next period. the function returns a vector of five results (Cost with no treatment, Cost with treatment, QALYs with no treatment and QALYs with treatment and an ICER). In this simple example treatment only influences utilities and costs not transition probabilities
 
 ```{r echo = T, eval = F}
 
