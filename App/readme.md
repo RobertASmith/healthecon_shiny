@@ -15,7 +15,7 @@ In order to understand this code you will need to know:
 - how an action button works: https://shiny.rstudio.com/reference/shiny/latest/observeEvent.html
 
 ### wrapper.R
-This file contains a script with the model wrapper function in it. The functions *gen_psa* and *f_MM_sicksicker* are created within this function for simplicity. In more complex examples with longer code chunks functions would generally be created externally and sourced.
+This file contains a script with the model wrapper function in it. The functions *f_gen_psa* and *f_MM_sicksicker* are created within this function for simplicity. In more complex examples with longer code chunks functions would generally be created externally and sourced.
 In order to understand this code you will need to know: 
 - What a function is: https://www.tutorialgateway.org/functions-in-r-programming/
 - What matrix multiplication (%*%) is https://stat.ethz.ch/R-manual/R-patched/library/base/html/matmult.html ; https://www.dummies.com/education/math/calculus/how-to-multiply-matrices-by-each-other/
