@@ -392,6 +392,10 @@ The app can be run within the R file using the function *shinyApp* which depends
 
 shinyApp(ui, server)
 ```
+The end product should look something like this:
+
+![Sick Sicker App](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/sick_sicker_app.PNG)
+
 
 ### Conclusion
 
