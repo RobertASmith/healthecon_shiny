@@ -1,0 +1,13 @@
+name: download
+title: download
+username:
+account: robertasmith
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 1887611
+bundleId: 2843266
+url: https://robertasmith.shinyapps.io/download/
+when: 1583143101.79722
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: R-Shiny for Health Economics ScHARR Feb20.pptx|README.md|Sick Sicker Diagram.PNG|sick_sicker_app.PNG

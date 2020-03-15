@@ -1,0 +1,23 @@
+---
+title: "Dynamic report"
+output: pdf_document
+params:
+  n: NA
+  t: NA
+---
+
+```{r}
+# The `params` object is available in the document.
+params$n
+```
+
+A plot of n vs t `r params$n` random points.
+
+```{r}
+plot(rnorm(n = 100,
+           mean = params$n,
+           sd = params$n/2),
+     rnorm(n=100,
+           mean = params$n,
+           sd = params$n/2))
+```
