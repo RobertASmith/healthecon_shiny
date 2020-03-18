@@ -69,6 +69,12 @@ The model function takes six inputs, outlined in Table 1 below, and returns a da
 
 While the focus of this tutorial is on the application of Shiny for health economic models, and therefore it is not important to understand exactly how the model works, we nevertheless provide a brief overview of the decision model. The model is a simple decision tree in which there is a choice between two interventions, intervention A and intervention B. Intervention A results in state 1 with probability *p_A_S1*, and state 2 with probability *p_A_S1*. It has no cost. Intervention B results in state 1 with probability *p_A_S1* $\times$ *rr* and state 2 with probability 1 - (*p_A_S1* $\times$ *rr*). The relative risk is uncertain, but is assumed to be log-normally distributed with mean *rr_mean* and standard deviation *rr_sd*. The one off treatment cost of intervention B is also uncertain, but is assumed to be normally distributed with mean = *c_B_tr_mean* and standard deviation *c_B_tr_sd*. The one off cost of state 1 and state 2 are input as scalars at *c_S1* and *c_S1*. The life years remaining for those in state 1 and state 2 are *ly_S1* and *ly_S2* respectively.
 
+\pagebreak
+
+![Diagram depecting how the code for the Sick-Sicker app is structured](./DecTree_diag.PNG)
+
+\pagebreak
+
 The R function *f_model*, shown below takes the six parameter inputs described in Table 1 and uses them to calculate incremental costs and qalys for this simple model. These are then returned in a data-frame called *df_res*.
 
 ```{r echo = T, eval = F}
