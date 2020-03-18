@@ -31,31 +31,31 @@ ui <- fluidPage(    # create user interface using fluidpage function
     sidebarPanel( # open sidebar panel
       
       selectInput(inputId = "SI_n_draws",                       # id of input, used in server
-                   label = "Number of Draws from Distribution", # label above dropdown
+                   label = "Number of Draws from Distributions", # label above dropdown
                    choices = list(100, 500, 1000, 2000, 5000),  # choices in dropdown box
                    selected = 1000,                             # initial selection
                    multiple = F),                               # allow multiple selections?               
       
       numericInput(inputId = "SI_c_B_tr_mean",      # id of input, used in server
-                   label = "Mean for log-normal distribution of costs of B",  # label next to numeric input
+                   label = "Mean of Treatment B cost",  # label next to numeric input
                    value = 1000,               # initial value
                    min = 0,                   # minimum value allowed
                    max = 2000),                # maximum value allowed
       
       numericInput(inputId = "SI_c_B_tr_sd",      # id of input, used in server
-                   label = "Standard deviation for log-normal distribution of costs of B",  # label next to numeric input
+                   label = "Standard deviation of Treatment B cost",  # label next to numeric input
                    value = 100,               # initial value
                    min = 0,                   # minimum value allowed
                    max = 200),                # maximum value allowed
       
       sliderInput(inputId = "SI_rr_mean",  # id of input, used in server
-                  label = "Mean for distribution of 'relative risk' of B vs A",      # label next to numeric input
+                  label = "Mean of 'relative risk' of B vs A",      # label next to numeric input
                   value = 0.95,                 # initial value
                   min = 0.5,                   # minimum value allowed
                   max = 1),                  # maximum value allowed
       
       sliderInput(inputId = "SI_rr_sd",  # id of input, used in server
-                  label = "Standard deviation for distribution of rr",      # label next to numeric input
+                  label = "Standard deviation for distribution of Relative Risk",      # label next to numeric input
                   value = 0.01,                 # initial value
                   min = 0.0000001,              # minimum value allowed
                   max = 0.03),                  # maximum value allowed
