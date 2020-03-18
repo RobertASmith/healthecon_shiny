@@ -133,7 +133,7 @@ f_model = function(n_draws     = 1000,      # number of iterations
 
 ## Integrating into R-Shiny
 
-Since the model is already wrapped into a function, which takes some inputs and returns a single data-frame of results as output, The next step is to integrate the model function into a Shiny web-app. This is done within a single R file, which we call *app.R*. This can be found here: [https://github.com/RobertASmith/healthecon_shiny/tree/master/App](https://github.com/RobertASmith/healthecon_shiny/tree/master/App).
+Since the model is already wrapped into a function, which takes some inputs and returns a single data-frame of results as output, The next step is to integrate the model function into a Shiny web-app. This is done within a single R file, which we call *app.R*. This can be found here: [https://github.com/RobertASmith/healthecon_shiny/blob/master/DecTree_App/DecTree_app.R](https://github.com/RobertASmith/healthecon_shiny/blob/master/DecTree_App/DecTree_app.R).
 
 The app.R script has three main parts, each are addressed in turn below:
 - set-up (getting everything ready so the user-interface and server can be created)
@@ -171,7 +171,7 @@ The example user interface displayed in Figure 2 and online at [https://robertas
 
 \pagebreak
 
-![ScreenPrint of Sick-Sicker user interface](../Tutorial/sick_sicker_app.PNG)
+![ScreenPrint of Decision Tree model user interface](../DecTree_App/AppPic.PNG)
 
 \pagebreak
 
