@@ -526,7 +526,7 @@ server <- function(input, output){
 ```  
 
 ### Running the app
-The app can be run within the R file using the function *shinyApp* which depends on the *ui* and *server* which have been created and described above. Running this creates a shiny application in the local environment (e.g. your desktop). In order to deploy the application onto the web the app needs to be *published* using the publish button in the top right corner of the R-file in RStudio (next to run-app).
+The app can be run within the R file using the function *shinyApp* which depends on the *ui* and *server* which have been created and described above. Running this creates a shiny application in the local environment (e.g. your desktop). In order to deploy the application onto the web the app needs to be published using the publish button in the top right corner of the R-file in RStudio (next to run-app).
 
 ```{r, echo = T, eval = F}
 
