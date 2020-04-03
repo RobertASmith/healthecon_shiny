@@ -299,6 +299,11 @@ The app.R script has three main parts, each are addressed in turn below:
 - user interface (what people will see)
 - server (stuff going on in the background)
 
+![Application Structure - to be replaced by better diagram](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/shiny_function_app.png)
+
+
+
+
 ### Set-up
 
 The set-up is relatively simple, load the R-Shiny package from your library so that you can use the R-Shiny function. The next step is to use the *source* function in baseR to run the script which creates the *f_wrapper* function, being careful to ensure your relative path is correct ('./wrapper.R' should work if the app.R file is within the same folder). The function *shinyApp* at the end of the app file is reliant on the *shiny* package so please ensure that the shiny package is installed, using *install.packages("shiny")* if it is not. 
@@ -512,9 +517,9 @@ The app can be run within the R file using the function *shinyApp* which depends
 shinyApp(ui, server)
 
 ```
-The end product should look something like this [Application Link](https://robertasmith.shinyapps.io/sick_sicker/)
+The end product should look like this [ShinyApp](https://robertasmith.shinyapps.io/sick_sicker/)
 
-![Sick Sicker App](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/sick_sicker_app.PNG)
+![Sick Sicker App Screenprint](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/sick_sicker_app.PNG)
 
 
 ### Conclusion
