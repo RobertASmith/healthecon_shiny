@@ -521,6 +521,23 @@ The end product should look like this [ShinyApp](https://robertasmith.shinyapps.
 
 ![Sick Sicker App Screenprint](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/sick_sicker_app.PNG)
 
+### Additional Functionality
+
+The example Sick-Sicker web-app that has been created is a simple, but functional, R-Shiny user interface for a health economic model. There are a number of additional functionalities, many of which are covered in an online book by Hadley Wickham (Wickham, 2020):
+
+- fully customised user interface aesthetics. Since the user interface is translated into HTML and CSS it is possible to customise all components (such as colors, fonts, graphics, layouts and backgrounds.
+
+- leverage many popular R packages to visualise model inputs (e.g. distributions) and outputs (e.g. plots and results tables).
+
+- upload files containing input parameters and data to the app.
+
+- download specific figures and tables from the app.
+
+- create a downloadable full report including model inputs and outputs.
+
+- send model results/report to an email address once the model has finished running.
+
+We are in the process of creating an [extended tutorial](https://github.com/RobertASmith/healthecon_shiny/tree/master/Tutorial-%20Extensions) which covers many of these functionalities.
 
 ### Conclusion
 
@@ -533,9 +550,11 @@ Alarid-Escudero, F., Krijkamp, Eline M, Enns, E.A., Hunink, M., Pechlivanoglou, 
 Alarid-Escudero, F., Krijkamp, Eline M, Pechlivanoglou, P., Jalal, H., Kao, Szu-Yu Zoe, Yang, A. and Enns, E.A. (2019). A need for change! A coding framework for improving transparency in decision modeling. PharmacoEconomics, 37, pp.1329-1339.
 
 Baio, G, Berardi, A, Heath and A (2017). Bayesian cost-effectiveness analysis with the r package BCEA. [online] Springer. Available at: http://www.springer.com/us/book/9783319557168.
+
 Baio, G., Berardi, A. and Heath, A. (2017). BCEAweb: A user-friendly web-app to use BCEA. Springer, pp.153-166.
 
 Baio, G. and Heath, A. (2017). When simple becomes complicated: why Excel should lose its place at the top table. SAGE Publications Sage UK: London, England.
+
 Beeley, C. (2016). Web application development with R using Shiny. Packt Publishing Ltd.
 
 DARTH Workgroup (2020). Decision analysis in r for technologies in health. [online] Available at: http://darthworkgroup.com/ [Accessed Mar. 2020].
@@ -545,8 +564,6 @@ Dowle, M. and Arun Srinivasan (2019). data.table: Extension of `data.frame`. [on
 Filipovic-Pierucci, A., Zarca, K. and Durand-Zaleski, I. (2016). Markov models for health economic evaluation modelling in r with the heemod package. Value in Health, 19, p.A369.
 
 Gendron, J. (2016). Introduction to r for business intelligence. Packt Publishing Ltd.
-
-Hadley Wickham (2016). ggplot2: Elegant graphics for data analysis. [online] Springer-Verlag New York. Available at: https://ggplot2.tidyverse.org.
 
 Hatswell, A.J. and Chandler, F. (2017). Sharing is caring: the case for company-level collaboration in pharmacoeconomic modelling. PharmacoEconomics, 35, pp.755-757.
 
@@ -574,3 +591,6 @@ Smith, R. (2020). RobertASmith/paper_makeHEshiny: Making health economics shiny:
 Strong, M., Oakley, J.E. and Brennan, A. (2014). Estimating multiparameter partial expected value of perfect information from a probabilistic sensitivity analysis sample: a nonparametric regression approach. Medical Decision Making, 34, pp.311-326.
 
 Wickham, H. (2020). Mastering shiny. [online] Available at: https://mastering-shiny.org/index.html [Accessed Mar. 2020].
+
+Wickham, H. (2016). ggplot2: Elegant graphics for data analysis. [online] Springer-Verlag New York. Available at: https://ggplot2.tidyverse.org.
+
