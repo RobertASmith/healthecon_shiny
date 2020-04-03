@@ -512,7 +512,7 @@ The app can be run within the R file using the function *shinyApp* which depends
 shinyApp(ui, server)
 
 ```
-The end product should look something like this:
+The end product should look something like this [Application Link](https://robertasmith.shinyapps.io/sick_sicker/)
 
 ![Sick Sicker App](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/sick_sicker_app.PNG)
 
@@ -523,8 +523,49 @@ The aim of this tutorial was to provide a useful reference for those hoping to c
 
 # References
 
-Alarid-Escudero, F., Krijkamp, E.M., Enns, E.A., Hunink, M.G., Pechlivanoglou, P. and Jalal, H., 2020. Cohort state-transition models in R: From conceptualization to implementation. arXiv preprint arXiv:2001.07824.
+Alarid-Escudero, F., Krijkamp, Eline M, Enns, E.A., Hunink, M., Pechlivanoglou, P. and Jalal, H. (2020). Cohort state-transition models in R: From conceptualization to implementation. arXiv preprint arXiv:2001.07824.
 
-Decision Analysis in R for Technologies in Health (DARTH) workgroup.Decision Analysis in R for Technologies in Health (DARTH) workgroup. http://darthworkgroup.com/. Accessed 19/02/2020. 
+Alarid-Escudero, F., Krijkamp, Eline M, Pechlivanoglou, P., Jalal, H., Kao, Szu-Yu Zoe, Yang, A. and Enns, E.A. (2019). A need for change! A coding framework for improving transparency in decision modeling. PharmacoEconomics, 37, pp.1329-1339.
 
-Krijkamp, E.M., Alarid-Escudero, F., Enns, E.A., Jalal, H.J., Hunink, M.M. and Pechlivanoglou, P., 2018. Microsimulation modeling for health decision sciences using R: a tutorial. Medical Decision Making, 38(3), pp.400-422.
+Baio, G, Berardi, A, Heath and A (2017). Bayesian cost-effectiveness analysis with the r package BCEA. [online] Springer. Available at: http://www.springer.com/us/book/9783319557168.
+Baio, G., Berardi, A. and Heath, A. (2017). BCEAweb: A user-friendly web-app to use BCEA. Springer, pp.153-166.
+
+Baio, G. and Heath, A. (2017). When simple becomes complicated: why Excel should lose its place at the top table. SAGE Publications Sage UK: London, England.
+Beeley, C. (2016). Web application development with R using Shiny. Packt Publishing Ltd.
+
+DARTH Workgroup (2020). Decision analysis in r for technologies in health. [online] Available at: http://darthworkgroup.com/ [Accessed Mar. 2020].
+
+Dowle, M. and Arun Srinivasan (2019). data.table: Extension of `data.frame`. [online] Available at: https://CRAN.R-project.org/package=data.table.
+
+Filipovic-Pierucci, A., Zarca, K. and Durand-Zaleski, I. (2016). Markov models for health economic evaluation modelling in r with the heemod package. Value in Health, 19, p.A369.
+
+Gendron, J. (2016). Introduction to r for business intelligence. Packt Publishing Ltd.
+
+Hadley Wickham (2016). ggplot2: Elegant graphics for data analysis. [online] Springer-Verlag New York. Available at: https://ggplot2.tidyverse.org.
+
+Hatswell, A.J. and Chandler, F. (2017). Sharing is caring: the case for company-level collaboration in pharmacoeconomic modelling. PharmacoEconomics, 35, pp.755-757.
+
+Hester, J. (2019). gmailr: Access the "gmail" "RESTful" API. [online] Available at: https://CRAN.R-project.org/package=gmailr.
+
+Incerti, D., Thom, H., Baio, G. and Jansen, Jeroen P (2019). R you still using excel? The advantages of modern software tools for health technology assessment. Value in Health, 22,
+pp.575-579.
+
+Jalal, H., Pechlivanoglou, P., Krijkamp, E., Alarid-Escudero, F., Enns, E. and Hunink, MG Myriam (2017). An overview of R in health decision sciences. Medical decision making, 37, pp.735-746.
+
+Jansen, Jeroen P, Incerti, D. and Linthicum, M.T. (2019). Developing open-source models for the US Health System: practical experiences and challenges to date with the Open-Source Value Project. PharmacoEconomics, 37, pp.1313-1320.
+
+Krijkamp, Eline M, Alarid-Escudero, F., Enns, E.A., Jalal, Hawre J, Hunink, MG Myriam and Pechlivanoglou, P. (2018). Microsimulation modeling for health decision sciences using R: a tutorial. Medical Decision Making, 38, pp.400-422.
+
+National Institute for Health and Care Excellence (Great Britain (2014). Guide to the processes of technology appraisal. National Institute for Health and Care Excellence.
+
+Owen, R.K., Bradbury, N., Xin, Y., Cooper, N. and Sutton, A. (2019). MetaInsight: An interactive web-based tool for analyzing, interrogating, and visualizing network meta-analyses using R-shiny and netmeta. Research synthesis methods. Wiley Online Library.
+
+Shiny (2020). Build your entire UI with HTML. [online] Available at: https://shiny.rstudio.com/articles/html-ui.html [Accessed Mar. 2020].
+
+Sievert, C. (2018). plotly for R. [online] Available at: https://plotly-r.com.
+
+Smith, R. (2020). RobertASmith/paper_makeHEshiny: Making health economics shiny: a tutorial. [online] Available at: https://doi.org/10.5281/zenodo.3730897.
+
+Strong, M., Oakley, J.E. and Brennan, A. (2014). Estimating multiparameter partial expected value of perfect information from a probabilistic sensitivity analysis sample: a nonparametric regression approach. Medical Decision Making, 34, pp.311-326.
+
+Wickham, H. (2020). Mastering shiny. [online] Available at: https://mastering-shiny.org/index.html [Accessed Mar. 2020].
