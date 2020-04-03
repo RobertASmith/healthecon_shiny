@@ -340,12 +340,6 @@ The set-up is relatively simple, load the R-Shiny package from your library so t
 # load packages from library
 library(truncnorm)
 library(shiny)             
-
-# source functions
-source("f_gen_psa.R")
-source("f_MM_sicksicker.R")
-source("f_wrapper.R")
-
 ```
 
 ### User Interface
