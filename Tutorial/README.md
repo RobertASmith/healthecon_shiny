@@ -27,6 +27,8 @@ NOTE: in order to use the *rtruncnorm* function the user must first install and 
 ```{r echo = T, eval = F}
 f_gen_psa <- function(n_sim = 1000, c_Trt = 50){
   
+  require(truncnorm)
+  
   df_psa <- data.frame(
     
     # Transition probabilities (per cycle)
@@ -289,6 +291,28 @@ f_wrapper <- function(
 } # end of function
 
 ```
+
+
+The wrapper returns a data frame with the costs and the QALY results for Treatement and No Treatment, and the corresponding ICER. Each row corresponds to one PSA-draw. To check what the result looks like, we can run the model, manually specifying the treatment costs (`c_Trt=100`), initial age (`n_age_init = 25`), and number of draws (`n_sim = 1000`).
+
+```{r, echo = T, eval = F}
+df_model_res = f_wrapper(
+    c_Trt = 200,
+    n_age_init = 25,
+    n_sim = 1000)
+    
+head(df_model_res)
+```
+
+| Cost_NoTrt|  Cost_Trt| QALY_NoTrt| QALY_Trt|     ICER|
+|----------:|---------:|----------:|--------:|--------:|
+|   97372.57|  98915.22|   16.25702| 16.96409| 2181.735|
+|  115454.87| 117169.32|   17.92764| 18.44866| 3290.594|
+|  106463.55| 108014.03|   17.29429| 17.97650| 2272.730|
+|   78588.10|  79769.39|   17.20124| 17.94575| 1586.671|
+|   97470.96|  98672.44|   20.13777| 20.77199| 1894.426|
+|  102619.44| 104177.11|   18.52157| 19.13199| 2551.819|
+
 
 ## Integrating into R-Shiny
 
