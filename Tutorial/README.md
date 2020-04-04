@@ -578,7 +578,7 @@ Beeley, C. (2016). Web application development with R using Shiny. Packt Publish
 
 DARTH Workgroup (2020). Decision analysis in r for technologies in health. [online] Available at: http://darthworkgroup.com/ [Accessed Mar. 2020].
 
-Dowle, M. and Arun Srinivasan (2019). data.table: Extension of `data.frame`. [online] Available at: https://CRAN.R-project.org/package=data.table.
+Dowle, M. and Arun Srinivasan (2019). data.table: Extension of data.frame. [online] Available at: https://CRAN.R-project.org/package=data.table.
 
 Filipovic-Pierucci, A., Zarca, K. and Durand-Zaleski, I. (2016). Markov models for health economic evaluation modelling in r with the heemod package. Value in Health, 19, p.A369.
 
