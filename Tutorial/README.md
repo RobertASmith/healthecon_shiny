@@ -6,7 +6,7 @@ ScHARR, University of Sheffield
 
 4th April 2020
 
-*Cite this tutorial as: XXXXXXXXXXXXXXXXX <INSERT REFERENCE TO WELLCOME OPEN RESEARCH>.
+This tutorial accompanies our open-access paper published here <insert link XXXXX> . Please cite this tutorial as: XXXXXXXXXXXXXXXXX <INSERT REFERENCE TO WELLCOME OPEN RESEARCH>. A more detailed background to health economic modelling in R and Shiny can be found in that academic paper.
 
 While the focus of this tutorial is on the application of shiny for health economic models, it will be useful to have a basic understanding of the underlying 'sick-sicker-model'. In the following, we will provide a brief overview. For further details, readers are encouraged to consult Alarid-Escudero et al., 2019, Krijkamp et al., 2020 and the DARTH group website [http://darthworkgroup.com/](http://darthworkgroup.com/).
 
