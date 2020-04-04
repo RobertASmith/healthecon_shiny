@@ -13,6 +13,9 @@ While the focus of this tutorial is on the application of shiny for health econo
 The Sick-Sicker model is a 4 state (Healthy, Sick, Sicker or Dead) Markov model. The cohort progresses through the model in cycles of equal duration, with the proportion of those in each health state in the next cycle being dependant on the proportion in each health state in the current cycle and the transition probability matrix. The diagram below shows the general model structure.
 
 ![Sick Sicker Diagram](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/Sick%20Sicker%20Diagram.PNG)
+.caption[
+**Figure 1.** Sick Sicker Diagram.
+]
 
 The analysis incorporates probabilistic sensitivity analysis (PSA) by creating a data-frame of PSA inputs (one row being one set of model inputs) based on cost, utility and probability distributions using the function *f_gen_psa* and then running the model with each set of PSA inputs using the model function *f_MM_sicksicker*. We therefore begin by describing the two functions *f_gen_psa* and *f_MM_sicksicker* in more detail before moving on to demonstrate how to create a user-interface. Note that we adapt the coding framework from Alarid-Escudero et al., (2019) to use the *f_* prefix for functions.
 
@@ -323,9 +326,10 @@ The app.R script has three main parts, each are addressed in turn below:
 - user interface (what people will see)
 - server (stuff going on in the background)
 
-![Application Structure - to be replaced by better diagram](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/shiny_function_app.png)
-
-
+![Figure 2. Application Structure](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/shiny_function_app.png)
+.caption[
+**Figure 2.** The figure depicts the relationship between the server and the user interface within the Shiny application.
+]
 
 
 ### Set-up
