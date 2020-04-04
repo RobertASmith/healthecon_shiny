@@ -4,7 +4,7 @@ Robert Smith and Paul Schneider
 
 ScHARR, University of Sheffield
 
-30th March 2020
+4th April 2020
 
 *Cite this tutorial as: XXXXXXXXXXXXXXXXX <INSERT REFERENCE TO WELLCOME OPEN RESEARCH>.
 
@@ -323,8 +323,10 @@ The app.R script has three main parts, each are addressed in turn below:
 - user interface (what people will see)
 - server (stuff going on in the background)
 
+Figure 2 depicts the relationship between the server and the user interface within the Shiny application. On a conceptual level, the user interface has three components: Shiny inputs (objects that the user can specify, e.g. by inputting a number),  Shiny outputs (objects created on the server side, e.g. plots and tables), and non-interactive features (any fixed elements, such as texts, headings, logos etc.). The server works almost like a normal R session. It runs various R operations, including the model function, which takes non-Shiny inputs (defined only on the server side) and some Shiny inputs from the user interface. The results are then send to the user interface and displayed as Shiny outputs.
+
 ![Figure 2. Application Structure](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/shiny_function_app.png)
-**Figure 2**: Application Structure. The figure depicts the relationship between the server and the user interface within the Shiny application.")
+**Figure 2**: Application Structure. 
 
 
 ### Set-up
