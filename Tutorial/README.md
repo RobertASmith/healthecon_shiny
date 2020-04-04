@@ -323,7 +323,8 @@ The app.R script has three main parts, each are addressed in turn below:
 - user interface (what people will see)
 - server (stuff going on in the background)
 
-![Figure 2. Application Structure](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/shiny_function_app.png "**Figure 2.** The figure depicts the relationship between the server and the user interface within the Shiny application.")
+![Figure 2. Application Structure](https://github.com/RobertASmith/healthecon_shiny/blob/master/Tutorial/shiny_function_app.png)
+**Figure 2**: Application Structure. The figure depicts the relationship between the server and the user interface within the Shiny application.")
 
 
 ### Set-up
