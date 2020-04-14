@@ -6,7 +6,7 @@ ScHARR, University of Sheffield
 
 4th April 2020
 
-This tutorial accompanies our open-access paper published here <insert link XXXXX> . Please cite this tutorial as: XXXXXXXXXXXXXXXXX <INSERT REFERENCE TO WELLCOME OPEN RESEARCH>. A more detailed background to health economic modelling in R and Shiny can be found in that academic paper.
+This tutorial accompanies our open-access paper published [here]{https://wellcomeopenresearch.org/articles/5-69/v1). Please cite this tutorial as: Smith R and Schneider P. Making health economic models Shiny: A tutorial. Wellcome Open Res 2020, 5:69. https://doi.org/10.12688/wellcomeopenres.15807.1. A more detailed background to health economic modelling in R and Shiny can be found in that academic paper.
 
 While the focus of this tutorial is on the application of shiny for health economic models, it will be useful to have a basic understanding of the underlying 'sick-sicker-model'. In the following, we will provide a brief overview. For further details, readers are encouraged to consult Alarid-Escudero et al., 2019, Krijkamp et al., 2020 and the DARTH group website [http://darthworkgroup.com/](http://darthworkgroup.com/).
 
@@ -606,6 +606,8 @@ Shiny (2020). Build your entire UI with HTML. [online] Available at: https://shi
 Sievert, C. (2018). plotly for R. [online] Available at: https://plotly-r.com.
 
 Smith, R. (2020). RobertASmith/paper_makeHEshiny: Making health economics shiny: a tutorial. [online] Available at: https://doi.org/10.5281/zenodo.3730897.
+
+Smith R and Schneider P. Making health economic models Shiny: A tutorial [version 1; peer review: awaiting peer review]. Wellcome Open Res 2020, 5:69 (https://doi.org/10.12688/wellcomeopenres.15807.1)
 
 Strong, M., Oakley, J.E. and Brennan, A. (2014). Estimating multiparameter partial expected value of perfect information from a probabilistic sensitivity analysis sample: a nonparametric regression approach. Medical Decision Making, 34, pp.311-326.
 
