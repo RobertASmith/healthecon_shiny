@@ -6,7 +6,9 @@ ScHARR, University of Sheffield
 
 4th April 2020
 
-This tutorial accompanies our open-access paper published [here]{https://wellcomeopenresearch.org/articles/5-69/v1). Please cite this tutorial as: Smith R and Schneider P. Making health economic models Shiny: A tutorial. Wellcome Open Res 2020, 5:69. https://doi.org/10.12688/wellcomeopenres.15807.1. A more detailed background to health economic modelling in R and Shiny can be found in that academic paper.
+This tutorial accompanies our open-access paper published [here](https://wellcomeopenresearch.org/articles/5-69/v1) which contains a more detailed background to health economic modelling in R and Shiny. This paper can be cited as:
+
+Smith R and Schneider P. Making health economic models Shiny: A tutorial. Wellcome Open Res 2020, 5:69. (https://doi.org/10.12688/wellcomeopenres.15807.1).
 
 While the focus of this tutorial is on the application of shiny for health economic models, it will be useful to have a basic understanding of the underlying 'sick-sicker-model'. In the following, we will provide a brief overview. For further details, readers are encouraged to consult Alarid-Escudero et al., 2019, Krijkamp et al., 2020 and the DARTH group website [http://darthworkgroup.com/](http://darthworkgroup.com/).
 
