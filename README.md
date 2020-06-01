@@ -7,7 +7,7 @@
 Contact:   rasmith3@sheffield.ac.uk
 
 This site contains all material related to the application of web based user interfaces (R-Shiny) to Health Economics and Decision Science. There are three main parts to the repository: 
-- a pre-print [publication](https://github.com/RobertASmith/healthecon_shiny/blob/master/Publication/Making health economic models Shiny A tutorial.pdf) discussing the merits of web based user interfaces for health economists and outlining an overview of the process of making models Shiny.
+- a pre-print [publication](https://github.com/RobertASmith/healthecon_shiny/blob/master/Publication/`Making health economic models Shiny A tutorial.pdf`) discussing the merits of web based user interfaces for health economists and outlining an overview of the process of making models Shiny.
 - a simple Shiny web [application](https://robertasmith.shinyapps.io/sick_sicker/) which can be replicated by the user by cloning this repo or copying the two files in the [App](https://github.com/RobertASmith/healthecon_shiny/tree/master/App) folder. 
 - a [tutorial](https://github.com/RobertASmith/healthecon_shiny/tree/master/Tutorial) which goes into more detail than the publication describing the code for the simple app.
 
