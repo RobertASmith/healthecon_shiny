@@ -1,25 +1,29 @@
 # ==============
+# 
+# SCRIPT 8 - download button
+#
 # Making Markov Models Shiny 
 # Robert Smith & Paul Schneider
 # University of Sheffield
 # contact: rasmith3@sheffield.ac.uk
 # ==============
 
-## app.R ##
-
+rm(list = ls())
 # install.packages("shiny") # necessary if you don't already have the function 'shiny' installed.
 
 # we need the function shiny installed, this loads it from the library.
-library(shiny)             
+library(shiny)  
+library(ggplot2)
 
 # source the wrapper function.
-source("./App/wrapper.R")   
+source("./App/wrapper.R") 
+source("./scripts/fun_script_8.R")
 
 #================================================================
 #                   Create User Interface
 #================================================================
 
-ui <- fluidPage(    # create user interface using fluidpage function
+ui <- fluidPage(    # create user interface using fluid-page function
   
   titlePanel("Sick Sicker Model in Shiny"),   # title of app
   
@@ -60,7 +64,9 @@ ui <- fluidPage(    # create user interface using fluidpage function
       
       h3("Cost-effectiveness Plane"),         # heading (Cost effectiveness plane)
       
-      plotOutput(outputId = "SO_CE_plane")       # plotOutput id = CE_plane, from server
+      plotOutput(outputId = "SO_CE_plane"),       # plotOutput id = CE_plane, from server
+      
+      downloadButton('cep')
       
     ) # close mainpanel    
     
@@ -87,7 +93,7 @@ server <- function(input, output){   # server = function with two inputs
                  #--- CREATE COST EFFECTIVENESS PLANE ---#
                  output$SO_icer_table <- renderTable({ # this continuously updates table
                    
-                   df_res_table <- data.frame( # create dataframe
+                   df_res_table <- data.frame( # create data-frame
                      
                      Option =  c("Treatment","No Treatment"), 
                      
@@ -114,36 +120,44 @@ server <- function(input, output){   # server = function with two inputs
                  #---  CREATE COST EFFECTIVENESS PLANE ---#
                  output$SO_CE_plane <- renderPlot({ # render plot repeatedly updates.
                    
-                   # calculate incremental costs and qalys from results dataframe
-                   df_model_res$inc_C <- df_model_res$Cost_Trt - df_model_res$Cost_NoTrt
-                   df_model_res$inc_Q <- df_model_res$QALY_Trt - df_model_res$QALY_NoTrt
+                   # use function ce_plot frrom fun_script_8 file to create plot.
+                   plot <- ce_plot(results = df_model_res)
                    
-                   # create cost effectiveness plane plot
-                   plot(x = df_model_res$inc_Q, # x axis incremental QALYS
-                        y = df_model_res$inc_C, # y axis incremental Costs
-                        #label axes
-                        xlab = "Incremental QALYs", 
-                        ylab = "Incremental Costs", 
-                        
-                        # set xlimits and ylimits for plot.
-                        xlim = c(min(df_model_res$inc_Q,df_model_res$inc_Q*-1),
-                                 max(df_model_res$inc_Q,df_model_res$inc_Q*-1)),
-                        ylim = c(min(df_model_res$inc_C,df_model_res$inc_C*-1),
-                                 max(df_model_res$inc_C,df_model_res$inc_C*-1)),
-                        # include y and y axis lines.
-                        abline(h = 0,v=0)
-                   ) # plot end 
-                 }) # renderplot end
+                   # save cost-effectiveness plane for download
+                   ceP_download <<-  reactive({plot})
+                   
+                   # output plot from function.
+                   plot
+                   
+                 }) # render plot end
+                 
+                 
+                 # cost effectiveness plane fig. download ----
+                 output$cep = downloadHandler(
+                   filename = 'ce_plane.png',    # select file name
+                   content = function(file) {
+                     device <- function(..., width, height) {
+                       grDevices::png(..., 
+                                      width = width, 
+                                      height = height,
+                                      res = 300, 
+                                      units = "in")
+                     }
+                     ggsave(file, 
+                            plot = ceP_download(), # need to remember to have "()" after the ceP_download we created above!
+                            device = device)
+                   })
                  
                }) # Observe Event End
   
   
 } # Server end
 
-  
+
 
 
 
 ## ----- run app------
 
 shinyApp(ui, server)
+

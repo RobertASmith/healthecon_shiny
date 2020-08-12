@@ -6,7 +6,7 @@
 # ==============
 
 # Set-up
-library(truncnorm)  # load the package truncnorm
+library(truncnorm)  # load the package trunc-norm
 
 rm(list=ls())
 
@@ -19,7 +19,7 @@ f_wrapper <- function(
   n_age_max  = 110,  # maximum age of follow up default is 110
   d_r     = 0.035,   # discount rate for costs & QALYS (NICE 3.5%)
   n_sim   = 1000,    # number of simulations default 1000
-  c_Trt   = 50 # cost of treatment deault 50
+  c_Trt   = 50       # cost of treatment default 50
 
   ){
   

@@ -1,11 +1,13 @@
 # ==============
+# 
+# SCRIPT 7
+#
 # Making Markov Models Shiny 
 # Robert Smith & Paul Schneider
 # University of Sheffield
 # contact: rasmith3@sheffield.ac.uk
 # ==============
 
-## app.R ##
 
 # install.packages("shiny") # necessary if you don't already have the function 'shiny' installed.
 
@@ -19,7 +21,7 @@ source("./App/wrapper.R")
 #                   Create User Interface
 #================================================================
 
-ui <- fluidPage(    # create user interface using fluidpage function
+ui <- fluidPage(    # create user interface using fluid-page function
   
   titlePanel("Sick Sicker Model in Shiny"),   # title of app
   
@@ -140,7 +142,7 @@ server <- function(input, output){   # server = function with two inputs
   
 } # Server end
 
-  
+
 
 
 
