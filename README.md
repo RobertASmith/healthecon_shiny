@@ -6,7 +6,7 @@
 
 Contact:   rasmith3@sheffield.ac.uk
 
-Website: [DarkPeakAnalytics](https://www.darkpeakanalytics.com)
+Website: [Dark Peak Analytics](https://www.darkpeakanalytics.com)
 
 This site contains all material related to the application of web based user interfaces (R-Shiny) to Health Economics and Decision Science. There are three main parts to the repository: 
 - a pre-print [publication](https://github.com/RobertASmith/healthecon_shiny/blob/master/Publication/Making%20health%20economic%20models%20Shiny%20A%20tutorial.pdf) discussing the merits of web based user interfaces for health economists and outlining an overview of the process of making models Shiny.
