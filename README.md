@@ -1,5 +1,12 @@
 ## R-Shiny for Health Economists
 
+[![GitHub release](https://img.shields.io/badge/R-HEDS-green)](https://img.shields.io/badge/R-hello-green)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+![GitHub last commit](https://img.shields.io/github/last-commit/RobertASmith/healthecon_shiny?color=red&style=plastic)
+![GitHub top language](https://img.shields.io/github/languages/top/RobertASmith/healthecon_shiny?style=plastic)
+![GitHub repo size](https://img.shields.io/github/repo-size/RobertASmith/healthecon_shiny?style=plastic)
+[![GitHub forks](https://img.shields.io/github/forks/RobertASmith/healthecon_shiny?style=social&label=Fork&maxAge=2592000)](https://GitHub.com/RobertASmith/shiny_healthy_economics/network/)
+
 [Robert Smith](https://www.linkedin.com/in/robert-smith-53b28438) and [Paul Schneider](https://www.sheffield.ac.uk/scharr/staff-pgrs/studentprofiles/paulschneider)
 
 *Public Health Economics and Decision Science, Wellcome Trust Doctoral Training Center, ScHARR, University of Sheffield, UK*
